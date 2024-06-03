@@ -10,9 +10,10 @@ let div = document.getElementById ('vacioCont')
 boton.addEventListener('click', function (){
     
     let task = document.createElement('div')
-    task.style.border= "1px solid black";
-    task.style.padding= "3px"
-    task.style.gap = "3px"
+    task.id= "tarea"
+    // task.style.border= "1px solid black";
+    // task.style.padding= "6px"
+    // task.style.gap = "3px"
     task.innerHTML = input.value
     div.appendChild(task)
 })
