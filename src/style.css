@@ -2,9 +2,33 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0;
     font-family: Arial, sans-serif;
+}
+h1 {
+    text-align: center;
+}
+
+#contador {
+    border: solid 2px black;
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-color: rgb(125, 125, 125);
+    color: rgb(125, 125, 125);
+    position: absolute;
+    left: 87%;
+    top: 120px;
+}
+
+.tareasCompletadas {
+    position: absolute;
+    left: 60%;
+    top: 120px;
+    color: rgb(125, 125, 125);
 }
 
 .mainContainer {
@@ -15,29 +39,49 @@ body {
     padding: 10px;
     box-sizing: border-box;
     position: relative;
+    border-color: rgb(125, 125, 125);
 }
+
+.secondContainer {
+    width: 550px;
+    height: 375px;
+    border: 2px solid #000;
+    border-radius: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    left: 2%;
+    top: 21%;
+    border-color: rgb(125, 125, 125);
+}
+
 
 #addTarea {
     background-color: blue;
     color: white;
+    width: 145px;
     padding: 10px 20px;
     border: none;
     border-radius: 7px;
     cursor: pointer;
     position: absolute;
-    top: 10px;
-    left: 50%;
+    top: 120px;
+    left: 15%;
     transform: translateX(-50%);
 }
 
-.vacioCont {
+/* .vacioCont {
     margin-top: 60px;
     height: calc(100% - 70px);
+    border: 2px solid #000;
     overflow-y: auto;
-}
+} */
 
 #texto {
     position: absolute;
-    left: 36%;
-    top: 10%;
+    left: 3%;
+    top: 27%;
+    width: 130px;
+    padding: 5px;
 }
+

@@ -8,11 +8,17 @@
 </head>
 <body>
     <div class="mainContainer">
-        <button id="addTarea">Agregar Tarea</button>
-        <input type="text" id="texto">
-        <div class="vacioCont">
-            <!-- Espacio para las tareas -->
-        </div>
+		<h1>Tareas</h1>
+		<button id="addTarea">Agregar Tarea</button>
+        <input type="text" id="texto" required placeholder="Ingrese su Tarea">
+		<p class="tareasCompletadas">Tareas Completadas</p>
+		<div id="contador">0</div>
+
+		<div class="secondContainer">
+        	<div class="vacioCont">
+        		<!-- Espacio para las tareas -->
+        	</div>
+		</div>
     </div>
     <script src="index.js"></script>
 </body>
