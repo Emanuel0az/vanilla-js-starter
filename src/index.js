@@ -6,6 +6,8 @@ let boton = document.getElementById('addTarea')
 
 
 boton.addEventListener('click', function (){
-    let texto = document.createElement('div')
-    
+    let nuevoDiv = document.createElement('div')
+    let nuevoText = texto
+    nuevoDiv.appendChild(nuevoText)
+
 })
