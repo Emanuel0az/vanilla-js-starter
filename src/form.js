@@ -1,5 +1,6 @@
 
 import { postTareas } from "./index.js";
+import { deleteTask } from "./index.js";
 
 let input = document.getElementById('texto');
 let boton = document.getElementById('addTarea');
@@ -12,37 +13,67 @@ boton.addEventListener('click', function () {
         return;
     }
 
-    let task = document.createElement('div');
-    task.className = 'task';
-    
-    let checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.title = "Marcar"
-    checkbox.className = 'checkbox';
-    
-    let taskText = document.createElement('span');
-    taskText.innerText = input.value;
-    
-    let deleteIcon = document.createElement('span');
-    deleteIcon.innerHTML = '♻️'; // Icono de papelera
-    deleteIcon.title = "Borrar"
-    deleteIcon.className = 'delete-icon';
-    deleteIcon.addEventListener('click', function() {
-        div.removeChild(task);
-    });
-    
-    task.appendChild(checkbox);
-    task.appendChild(taskText);
-    task.appendChild(deleteIcon);
-    div.appendChild(task);
-    
-    // input.value = ''; // Limpiar el campo de entrada
+    asignar()
 
-    if (boton != false && input != "") {
-      console.log(postTareas);
+    async function asignar() {
+        
+       
+         let valores = await postTareas()
 
-      postTareas(input.value)
+      
+        postTareas(input.value)
+
+        let task = document.createElement('div');
+        task.className = 'task';
+        task.id=valores[i].id
+        
+        let checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.title = "Marcar"
+        checkbox.className = 'checkbox';
+        
+        let taskText = document.createElement('span');
+        taskText.innerText = input.value;
+        
+        let deleteIcon = document.createElement('span');
+        deleteIcon.innerHTML = '♻️'; // Icono de papelera
+        deleteIcon.title = "Borrar"
+        deleteIcon.className = 'delete-icon';
+        
+        deleteIcon.addEventListener('click', function() { // evento de click para borrar el div
+            div.removeChild(task);
+
+         
+
+            deleteTask(task.id)
+    
+    
+    
+            
+            // se llama la funcion de borrar datos de la API
+       
+        });
+        
+        task.appendChild(checkbox);
+        task.appendChild(taskText);
+        task.appendChild(deleteIcon);
+        div.appendChild(task);
+        
+        // input.value = ''; // Limpiar el campo de entrada
+    
+        if (boton != false && input != "") {
+          console.log(task);
+    
+         // se llama la funcion de agregar datos a la API
+    
+        }
+
 
     }
+
+
+   
+
+
 
 });
