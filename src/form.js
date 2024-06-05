@@ -1,3 +1,4 @@
+import e from "cors";
 import { postTareas } from "./index.js";
 import { deleteTask } from "./index.js";
 
@@ -26,16 +27,19 @@ boton.addEventListener('click', function () {
 
         
 
-        let valores = await postTareas();
-        postTareas(input.value);
+        let valores = await postTareas(input.value);
+        
 
         valores.forEach(function (e){
-            console.log(e);
+            console.log(e.id);
+            
+
         })
 
         let task = document.createElement('div');
         task.className = 'task';
-        task.id = valores[0];
+        task.id = valores[valores.length-1].id;
+        console.log(valores);
 
         let checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
