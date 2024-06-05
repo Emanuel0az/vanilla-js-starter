@@ -1,5 +1,23 @@
-export {postTareas}
+export{postTareas}
 export{deleteTask}
+export{getTask}
+
+
+async function getTask () {
+  try {
+    let response = await fetch('http://localhost:3000/api/task/');
+    if (response.ok) {
+      let data = await response.json();
+      console.log(data);
+    } else {
+      console.error('Error al obtener datos:', response.status);
+    }
+  } catch (error) {
+    console.error('Error en la solicitud:', error);
+  }
+}
+
+
 
 
 

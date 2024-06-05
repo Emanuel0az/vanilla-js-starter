@@ -1,6 +1,7 @@
 import e from "cors";
 import { postTareas } from "./index.js";
 import { deleteTask } from "./index.js";
+import { getTask } from "./index.js";
 
 
 let input = document.getElementById('texto');
@@ -14,13 +15,17 @@ function updateCounter() {
     contador.innerText = checkCount;
 }
 
+// input.addEventListener()
+
+
+
 boton.addEventListener('click', function () {
     if (input.value.trim() === '') { // el metodo trim elimina los espacios y los transforma en nada
         // No hacer nada si el input está vacío
         alert('Por favor, ingrese una tarea.');
         return;
     }
-
+    getTask()
     asignar();
 
     async function asignar() {
@@ -82,6 +87,7 @@ boton.addEventListener('click', function () {
             console.log(task);
         }
         input.value = "";
+        
     }
 });
 
