@@ -23,8 +23,15 @@ boton.addEventListener('click', function () {
     asignar();
 
     async function asignar() {
+
+        
+
         let valores = await postTareas();
         postTareas(input.value);
+
+        valores.forEach(function (e){
+            console.log(e);
+        })
 
         let task = document.createElement('div');
         task.className = 'task';
@@ -35,7 +42,7 @@ boton.addEventListener('click', function () {
         checkbox.title = "Marcar";
         checkbox.className = 'checkbox';
 
-        // Event listener para el checkbox
+
         checkbox.addEventListener('change', function () {
             if (checkbox.checked) {
                 checkCount++;
