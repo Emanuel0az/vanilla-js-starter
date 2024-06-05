@@ -9,7 +9,7 @@ let boton = document.getElementById('addTarea');
 let div = document.getElementById('vacioCont');
 let contador = document.getElementById('contador');
 let checkCount = 0; // Variable para contar los checks
-
+getTask()
 // Función para actualizar el contador en el DOM
 function updateCounter() {
     contador.innerText = checkCount;
@@ -25,7 +25,7 @@ boton.addEventListener('click', function () {
         alert('Por favor, ingrese una tarea.');
         return;
     }
-    getTask()
+    
     asignar();
 
     async function asignar() {
