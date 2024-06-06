@@ -10,7 +10,7 @@ let div = document.getElementById('vacioCont');
 let contador = document.getElementById('contador');
 let checkCount = 0; // Variable para contar los checks
 getTask()
-// Función para actualizar el contador en el DOM
+// Función para actualizar el contador
 function updateCounter() {
     contador.innerText = checkCount;
 }
