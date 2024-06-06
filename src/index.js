@@ -8,7 +8,7 @@ async function getTask () {
     let response = await fetch('http://localhost:3000/api/task/');
     if (response.ok) {
       let data = await response.json();
-      console.log(data);
+      // console.log(data);
     } else {
       console.error('Error al obtener datos:', response.status);
     }
@@ -37,7 +37,7 @@ async function postTareas (tarea) {
             
     });
     const data = await response.json();
-    console.log(data)
+    // console.log(data)
 
     return data
   } catch (error) { //si promesa no se resuelve, https status 400-499 y 500-599
