@@ -9,6 +9,7 @@ async function getTask () {
     if (response.ok) {
       let data = await response.json();
       // console.log(data);
+      return data;
     } else {
       console.error('Error al obtener datos:', response.status);
     }

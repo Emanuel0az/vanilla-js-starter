@@ -36,7 +36,7 @@ h1 {
     width: 600px;
     height: 600px;
     border: 2px solid #000;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 10px;
     box-sizing: border-box;
     position: relative;
@@ -47,7 +47,7 @@ h1 {
     width: 550px;
     height: 375px;
     border: 2px solid #000;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 10px;
     box-sizing: border-box;
     position: relative;

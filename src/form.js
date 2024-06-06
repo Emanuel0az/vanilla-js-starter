@@ -1,7 +1,9 @@
 import { postTareas } from "./index.js";
 import { deleteTask } from "./index.js";
 import { getTask } from "./index.js";
+import { elementos } from "./elementos.js";
 
+export{div}
 
 let input = document.getElementById('texto');
 let boton = document.getElementById('addTarea');
@@ -9,10 +11,22 @@ let div = document.getElementById('vacioCont');
 let contador = document.getElementById('contador');
 let checkCount = 0; // Variable para contar los checks
 getTask()
+
+
+async function showTask() {
+    elementos()
+    
+}
+
+window.addEventListener("load", ()=> {
+    showTask()
+})
 // Función para actualizar el contador en el DOM
 function updateCounter() {
     contador.innerText = checkCount;
 }
+
+
 
 // Función para añadir una tarea
 async function asignar() {
@@ -45,6 +59,7 @@ async function asignar() {
             checkCount = Math.max(0, checkCount - 1); // Evitar que baje de 0
         }
         updateCounter();
+        // return task
     });
 
     // agrega al div lo que la persona puso en la tarea
@@ -86,6 +101,7 @@ input.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         asignar();
     }
+    getTask()
 });
 
 // actualiza el contador
