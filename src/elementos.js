@@ -7,7 +7,6 @@ export {elementos}
 
 
 async function elementos() {
-    let count = 0
     try { 
         let tareas = await getTask()
         tareas.forEach(async (tareas) => {
@@ -23,20 +22,6 @@ async function elementos() {
             checkbox.title = "Marcar";
             checkbox.className = 'checkbox';
             console.log(tareas, "tareas2");
-
-
-            // function updateCounter() {
-            //     contador.innerText = checkCount;
-            // }
-            checkbox.addEventListener('change', function () {
-                if (checkbox.checked) {
-                    count++;
-                } else {
-                    count = Math.max(0, count - 1); // Evitar que baje de 0
-                }
-                // updateCounter();
-                // return task
-            });
 
             let deleteIcon = document.createElement('span');
             deleteIcon.innerHTML = '♻️'; // Icono de papelera
