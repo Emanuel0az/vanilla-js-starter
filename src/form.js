@@ -1,7 +1,7 @@
 import { postTareas } from "./index.js";
 import { deleteTask } from "./index.js";
 import { getTask } from "./index.js";
-import { elementos } from "./elementos.js";
+import { elementos } from "./prueba.js";
 
 export{div}
 
@@ -34,11 +34,12 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Escuchar cambios en el contenido del div
-    vacioContent.addEventListener("DOMNodeInserted", actualizarMensaje);
-    vacioContent.addEventListener("DOMNodeRemoved", actualizarMensaje);
+    // div.addEventListener("DOMNodeInserted", actualizarMensaje);
+    // div.addEventListener("DOMNodeRemoved", actualizarMensaje);
     
     // Llamar a la función inicialmente para establecer el estado correcto
     actualizarMensaje();
+    console.log(actualizarMensaje(),"funciona");
 });
 
 
