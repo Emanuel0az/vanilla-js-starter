@@ -4,43 +4,56 @@ import { getTask } from "./index.js";
 import { elementos } from "./prueba.js";
 
 export{div}
+export{men}
 
 let input = document.getElementById('texto');
 let boton = document.getElementById('addTarea');
 let div = document.getElementById('vacioCont');
 let contador = document.getElementById('contador');
+let men = document.getElementById("mensajeTarea");
+
+
+
 let checkCount = 0; // Variable para contar los checks
 getTask()
 
 
-
-document.addEventListener("DOMContentLoaded", function() {
-    // const vacioContent = document.getElementById("vacioCont");
+    // Función para comprobar y actualizar la visibilidad del mensaje
+    // async function actualizarMensaje() {
     
+    // console.log(div)
+
+
+    //     let prom = await getTask()
+    //     console.log(prom.length)
+
+
+    //     if (prom > 0) {
+    //         mensajeTarea.style.display = 'none';
+    //     } else {
+    //         if (prom == 0) {
+    //             mensajeTarea.style.display = 'block';
+    //         }
+    
+    //     }
+    //     return mensajeTarea
+    // }    
+    // Llamar a la función inicialmente para establecer el estado correcto
+
+   
+
+    /*
+
+document.addEventListener("DOMContentLoaded", function() {    
     // Crear el mensaje de "No hay tareas"
     const mensaje = document.createElement("p");
     mensaje.textContent = "No hay tareas";
     mensaje.id = "mensajeTarea";
     div.appendChild(mensaje);
-
-    // Función para comprobar y actualizar la visibilidad del mensaje
-    function actualizarMensaje() {
-        const mensajeTarea = document.getElementById("mensajeTarea");
-        if (div !== getTask()) {
-            mensajeTarea.style.display = 'none';
-        } else {
-            mensajeTarea.style.display = 'block';
-        }
-    }
-
-    // Escuchar cambios en el contenido del div
-    // div.addEventListener("DOMNodeInserted", actualizarMensaje);
-    // div.addEventListener("DOMNodeRemoved", actualizarMensaje);
     
-    // Llamar a la función inicialmente para establecer el estado correcto
-    actualizarMensaje();
-    console.log(actualizarMensaje(),"funciona");
 });
+
+*/
 
 
 
@@ -73,6 +86,11 @@ async function asignar() {
         
     // variable que contiene la data de la API por medio de la funcion postTareas
     let valores = await postTareas(input.value);
+    
+
+    men.style.display="none"
+    // actualizarMensaje()
+
 
     // crea un contenedor donde se guarda la tarea, el checkbox y el emoji
     let task = document.createElement('div');
@@ -114,12 +132,18 @@ async function asignar() {
         }
         div.removeChild(task);
         deleteTask(task.id); // se llama la funcion de borrar datos de la API
+ 
+
+
+        // actualizarMensaje()
     });
 
     task.appendChild(checkbox);
     task.appendChild(taskText);
     task.appendChild(deleteIcon);
     div.appendChild(task);
+ 
+
 
     // validacion para dejar el input vacio cuando se agrege una tarea
     if (boton != false && input != "") {
