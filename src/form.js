@@ -13,6 +13,40 @@ let checkCount = 0; // Variable para contar los checks
 getTask()
 
 
+
+document.addEventListener("DOMContentLoaded", function() {
+    // const vacioContent = document.getElementById("vacioCont");
+    
+    // Crear el mensaje de "No hay tareas"
+    const mensaje = document.createElement("p");
+    mensaje.textContent = "No hay tareas";
+    mensaje.id = "mensajeTarea";
+    div.appendChild(mensaje);
+
+    // Función para comprobar y actualizar la visibilidad del mensaje
+    function actualizarMensaje() {
+        const mensajeTarea = document.getElementById("mensajeTarea");
+        if (div !== getTask()) {
+            mensajeTarea.style.display = 'none';
+        } else {
+            mensajeTarea.style.display = 'block';
+        }
+    }
+
+    // Escuchar cambios en el contenido del div
+    vacioContent.addEventListener("DOMNodeInserted", actualizarMensaje);
+    vacioContent.addEventListener("DOMNodeRemoved", actualizarMensaje);
+    
+    // Llamar a la función inicialmente para establecer el estado correcto
+    actualizarMensaje();
+});
+
+
+
+
+
+
+
 async function showTask() {
     elementos()
     
