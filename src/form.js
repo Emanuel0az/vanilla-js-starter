@@ -1,167 +1,63 @@
-import { postTareas } from "./index.js";
-import { deleteTask } from "./index.js";
-import { getTask } from "./index.js";
-import { elementos } from "./prueba.js";
 
-export{div}
-export{men}
+import { postTareas } from './index.js';
+import { elementos } from './elementos.js';
+export {actuaConunter}
+export {revisarTareas}
+export {showTask}
 
+// Obtener referencias a elementos del DOM
 let input = document.getElementById('texto');
 let boton = document.getElementById('addTarea');
 let div = document.getElementById('vacioCont');
 let contador = document.getElementById('contador');
 let men = document.getElementById("mensajeTarea");
 
-
-
 let checkCount = 0; // Variable para contar los checks
-getTask()
 
-
-    // Función para comprobar y actualizar la visibilidad del mensaje
-    // async function actualizarMensaje() {
-    
-    // console.log(div)
-
-
-    //     let prom = await getTask()
-    //     console.log(prom.length)
-
-
-    //     if (prom > 0) {
-    //         mensajeTarea.style.display = 'none';
-    //     } else {
-    //         if (prom == 0) {
-    //             mensajeTarea.style.display = 'block';
-    //         }
-    
-    //     }
-    //     return mensajeTarea
-    // }    
-    // Llamar a la función inicialmente para establecer el estado correcto
-
-   
-
-    /*
-
-document.addEventListener("DOMContentLoaded", function() {    
-    // Crear el mensaje de "No hay tareas"
-    const mensaje = document.createElement("p");
-    mensaje.textContent = "No hay tareas";
-    mensaje.id = "mensajeTarea";
-    div.appendChild(mensaje);
-    
+// Función que se ejecuta cuando la página carga
+window.addEventListener("load", () => {
+    showTask(); // Muestra las tareas al cargar la página
 });
 
-*/
-
-
-
-
-
-
-
-async function showTask() {
-    elementos()
-    
-}
-
-window.addEventListener("load", ()=> {
-    showTask()
-})
 // Función para actualizar el contador en el DOM
-function updateCounter() {
+function actuaConunter(count) {
+    checkCount = count;
     contador.innerText = checkCount;
+    localStorage.setItem('checkCount', checkCount); // Guarda el contador en localStorage
 }
-
-
 
 // Función para añadir una tarea
 async function asignar() {
-    if (input.value.trim() === '') { // el metodo trim elimina los espacios y los transforma en nada
-        // No hacer nada si el input está vacío
-        alert('Por favor, ingrese una tarea.');
+    if (input.value.trim() === '') {
+        alert('Por favor, ingrese una tarea.'); // Muestra una alerta si el input está vacío
         return;
     }
-        
-    // variable que contiene la data de la API por medio de la funcion postTareas
-    let valores = await postTareas(input.value);
-    
-
-    men.style.display="none"
-    // actualizarMensaje()
-
-
-    // crea un contenedor donde se guarda la tarea, el checkbox y el emoji
-    let task = document.createElement('div');
-    task.className = 'task';
-    task.id = valores[valores.length-1].id;
-    // console.log(valores);
-
-    // crea un checkbox para marcar la tarea como realizada
-    let checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.title = "Marcar";
-    checkbox.className = 'checkbox';
-
-    // evento de cambio para el checkbox para que no baje de 0
-    checkbox.addEventListener('change', function () {
-        if (checkbox.checked) {
-            checkCount++;
-        } else {
-            checkCount = Math.max(0, checkCount - 1); // Evitar que baje de 0
-        }
-        updateCounter();
-        // return task
-    });
-
-    // agrega al div lo que la persona puso en la tarea
-    let taskText = document.createElement('span');
-    taskText.innerText = input.value;
-
-    // crea in emoji para  borrar la tarea
-    let deleteIcon = document.createElement('span');
-    deleteIcon.innerHTML = '♻️'; // Icono de papelera
-    deleteIcon.title = "Borrar";
-    deleteIcon.className = 'delete-icon';
-
-    deleteIcon.addEventListener('click', function() { // evento de click para borrar el div
-        if (checkbox.checked) {
-            checkCount = Math.max(0, checkCount - 1); // Decrementa el contador si estaba marcado
-            updateCounter();
-        }
-        div.removeChild(task);
-        deleteTask(task.id); // se llama la funcion de borrar datos de la API
- 
-
-
-        // actualizarMensaje()
-    });
-
-    task.appendChild(checkbox);
-    task.appendChild(taskText);
-    task.appendChild(deleteIcon);
-    div.appendChild(task);
- 
-
-
-    // validacion para dejar el input vacio cuando se agrege una tarea
-    if (boton != false && input != "") {
-        console.log(task);
-    }
-    input.value = "";
+    await postTareas(input.value); // Llama a la función para agregar la tarea a la API
+    input.value = ""; // Limpia el input
+    showTask(); // Muestra las tareas actualizadas desde la API
 }
 
-// Event listener para el botón que llama a la funcion de arriba llamada asignar
+// Event listener para el botón que llama a la función asignar
 boton.addEventListener('click', asignar);
 
-// Event listener para el input, para que cuando le de enter sea como el boton
-input.addEventListener('keydown', function(event) {
+// Event listener para el input, para que cuando se presione Enter también llame a la función asignar
+input.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         asignar();
     }
-    getTask()
 });
 
-// actualiza el contador
-updateCounter();
+// Función para verificar si hay tareas en el div
+function revisarTareas() {
+    if (div.children.length === 0) {
+        men.style.display = "block"; // Muestra el mensaje si no hay tareas
+    } else {
+        men.style.display = "none"; // Oculta el mensaje si hay tareas
+    }
+}
+
+// Función para mostrar las tareas llamando a elementos
+async function showTask() {
+    men.style.display = "none"; // Oculta el mensaje al cargar las tareas
+    elementos(); // Llama a elementos para mostrar las tareas
+}

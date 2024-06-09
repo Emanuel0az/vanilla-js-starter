@@ -1,67 +1,49 @@
-export{postTareas}
-export{deleteTask}
-export{getTask}
+export {getTask}
+export {postTareas}
+export {deleteTask}
 
-
-async function getTask () {
+async function getTask() {
   try {
-    let response = await fetch('http://localhost:3000/api/task/');
-    if (response.ok) {
-      let data = await response.json();
-      // console.log(data);
-      return data;
-    } else {
-      console.error('Error al obtener datos:', response.status);
-    }
+      let response = await fetch('http://localhost:3000/api/task/');
+      if (response.ok) {
+          let data = await response.json();
+          return data; // Retorna los datos de las tareas obtenidas
+      } else {
+          console.error('Error al obtener datos:', response.status);
+      }
   } catch (error) {
-    console.error('Error en la solicitud:', error);
+      console.error('Error en la solicitud:', error);
   }
 }
 
-
-
-
-
-
-async function postTareas (tarea) {
+async function postTareas(tarea) {
   try {
-    const response = await fetch("http://localhost:3000/api/task", {
-      method: "POST",
-      header: {'Content-type':'application/Json'},
-      headers: {
-        'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-       
-          task: tarea,
+      const response = await fetch("http://localhost:3000/api/task", {
+          method: "POST",
+          headers: {
+              'Content-Type': 'application/json' // Indica que los datos se envían en formato JSON
+          },
+          body: JSON.stringify({
+              task: tarea, // La tarea que se va a agregar
           })
-            
-    });
-    const data = await response.json();
-    // console.log(data)
-
-    return data
-  } catch (error) { //si promesa no se resuelve, https status 400-499 y 500-599
-    console.error(error);
+      });
+      const data = await response.json(); // Obtiene la respuesta de la API en formato JSON
+      return data; // Retorna los datos de la tarea agregada
+  } catch (error) {
+      console.error(error);
   }
 }
 
-
-
-
-
-async function deleteTask (id) {
+async function deleteTask(id) {
   try {
-    const response = await fetch("http://localhost:3000/api/task/"+id, {
-      method: "DELETE",   
-
-    });
-       
-    
-  } catch (error) { //si promesa no se resuelve, https status 400-499 y 500-599
-    console.error(error);
+      await fetch("http://localhost:3000/api/task/" + id, {
+          method: "DELETE", // Especifica el método DELETE
+      });
+  } catch (error) {
+      console.error(error);
   }
 }
+
 
 
 
