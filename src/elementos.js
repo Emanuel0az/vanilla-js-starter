@@ -1,4 +1,3 @@
-// elementos.js
 import { getTask, deleteTask, updateTask } from './index.js';
 import { actuaConunter, revisarTareas } from './form.js';
 
@@ -12,7 +11,7 @@ export async function elementos() {
     // Restablece el contador a cero antes de contar los checkboxes marcados
     let checkCount = 0;
 
-    if (await getTask() == '') {
+    if (tareas.length <= 0) {
         men.style.display = "block"; // Muestra el mensaje si no hay tareas
     } else {
         men.style.display = "none"; // Oculta el mensaje si hay tareas

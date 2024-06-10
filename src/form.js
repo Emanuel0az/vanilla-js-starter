@@ -1,4 +1,3 @@
-// form.js
 import { postTareas } from './index.js';
 import { elementos } from './elementos.js';
 export { actuaConunter, revisarTareas, showTask };
