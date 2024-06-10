@@ -35,8 +35,9 @@ async function asignar() {
 }
 
 // Event listener para el botón que llama a la función asignar
-boton.addEventListener('click', function (){
-    asignar()
+boton.addEventListener('click', function () {
+    asignar();
+    recargarPagina()
 });
 
 // Event listener para el input, para que cuando se presione Enter también llame a la función asignar
