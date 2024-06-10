@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>Ejemplo básico</title>
-	<meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-	<h1>La aplicación esta corriendo!</h1>
+    <div class="mainContainer">
+		<h1>Tareas por Hacer</h1>
+		
+		<button id="addTarea">Agregar Tarea</button>
+        <input type="text" id="texto" required placeholder="Ingrese su Tarea">
 
-	<div id="contPrincipal">
-		<button id="agregar">Agregar tarea</button>
-	</div>
 
-	<script src="./index.js" type="module"></script>
+		<p class="tareasCompletadas">Tareas Completadas</p>
+
+		<div id="contador">0</div>
+
+		<div class="secondContainer">
+        	<div id="vacioCont">
+				<p id="mensajeTarea">No Existen Tareas</p>
+        		<!-- Espacio para las tareas -->
+        	</div>
+		</div>
+    </div>
+    <script src="form.js" type="module"></script>
 </body>
-
 </html>
