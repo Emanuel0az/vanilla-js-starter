@@ -81,7 +81,7 @@ h1 {
 }
 
 #vacioCont > div{
-    height: calc(100% - 30px);
+    height: calc(100% - 32px);
     overflow-y: auto;
     width: 95%;
     padding: 8px;
@@ -114,3 +114,23 @@ h1 {
     cursor: pointer;
 }
 
+#textTarea {
+    padding: 0;
+    margin: 0;
+} 
+
+#mensajeTarea {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-button {
+    cursor: pointer; 
+    position: absolute;
+    left: 80%;
+}
+
+.task-text {
+    margin: 0;
+}
