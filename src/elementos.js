@@ -12,7 +12,7 @@ export async function elementos() {
     // Restablece el contador a cero antes de contar los checkboxes marcados
     let checkCount = 0;
 
-    if (tareas.length === 0) {
+    if (await getTask() == '') {
         men.style.display = "block"; // Muestra el mensaje si no hay tareas
     } else {
         men.style.display = "none"; // Oculta el mensaje si hay tareas

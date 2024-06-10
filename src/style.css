@@ -23,6 +23,7 @@ h1 {
     position: absolute;
     left: 87%;
     top: 120px;
+    transition: opacity 0.3s ease;
 }
 
 .tareasCompletadas {
@@ -121,8 +122,8 @@ h1 {
 
 #mensajeTarea {
     display: grid;
-    justify-content: center;
-    align-items: center;
+    place-items: center;
+    margin-top: 30%;
 }
 
 .edit-button {
